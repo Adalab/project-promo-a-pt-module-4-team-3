@@ -31,3 +31,7 @@ server.get("/projects", (req, res) => {
   };
   res.json(response);
 });
+
+// crear servidor de estáticos
+
+server.use(express.static("./public"));
