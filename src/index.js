@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const mysql = require("mysql2/promise");
 
 // create and config server
 const server = express();
@@ -24,12 +25,42 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-//hacer un endpoint
+// ENDPOINTS
+
+//endpoint prueba
 server.get("/projects", (req, res) => {
   const response = {
     projects: [{ name: "NaturaTech" }, { name: "holis" }],
   };
   res.json(response);
+});
+
+// endpoint a la base de datos
+
+server.get("/api/projects", async (req, res) => {
+  // Connectar con la base de datos
+
+  const conn = await getConnection();
+
+  // Lanzar un SELECT
+
+  const queryGetProjects = `
+    SELECT *
+    FROM projects, users
+     
+  `;
+
+  const [results] = await conn.query(queryGetProjects);
+
+  // Recuperar los datos
+
+  // console.log(results);
+
+  // Cerramos la conexion
+
+  conn.close();
+
+  res.json({ info: "nada", results: results });
 });
 
 // crear servidor de estáticos
