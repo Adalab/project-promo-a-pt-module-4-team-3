@@ -20,7 +20,7 @@ function Landing() {
             </Link>
           </div>
           <div className="content__button">
-            <Link to="/create" className="button__a" href="#">
+            <Link to="/projects" className="button__a" href="#">
               Descubre proyectos
             </Link>
           </div>

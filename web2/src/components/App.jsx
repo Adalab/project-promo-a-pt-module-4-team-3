@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Landing from "./Landing.jsx";
 import Create from "./Create.jsx";
+import RenderProjects from "./RenderProjects.jsx";
 import handleFetchCreate from "../services/onSubmit.js";
 import { get, set } from "../services/localStorage.js";
 
@@ -25,10 +26,24 @@ function App() {
   );
 
   const [dataResponse, setDataResponse] = useState("");
+  const [projectsData, setProjectsData] = useState([]);
 
   useEffect(() => {
     set("data", { ...data });
   }, [data]);
+
+  useEffect(() => {
+    async function loadData() {
+      const response = await fetch("http://localhost:4000/api/projects");
+
+      const data = await response.json();
+
+      setProjectsData(data.results);
+      console.log(projectsData);
+    }
+
+    loadData();
+  }, []);
 
   const updateData = (fieldName, userValue) => {
     setData({ ...data, [fieldName]: userValue });
@@ -66,6 +81,21 @@ function App() {
                   setDataResponse={setDataResponse}
                   dataResponse={dataResponse}
                 />
+              </main>
+              <Footer />{" "}
+            </div>
+          </>
+        }
+      ></Route>
+      <Route
+        path="/projects"
+        element={
+          <>
+            {" "}
+            <div className="container">
+              <Header />
+              <main className="main">
+                <RenderProjects projectsData={projectsData} />
               </main>
               <Footer />{" "}
             </div>
