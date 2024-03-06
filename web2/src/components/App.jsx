@@ -94,7 +94,7 @@ function App() {
             {" "}
             <div className="container">
               <Header />
-              <main className="main">
+              <main className="main__projects">
                 <RenderProjects projectsData={projectsData} />
               </main>
               <Footer />{" "}

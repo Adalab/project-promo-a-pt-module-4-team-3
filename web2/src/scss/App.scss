@@ -438,3 +438,26 @@ text-align: center;
 .buttons__landing{
   display: flex;
 }
+
+//RENDERPROJECTS
+
+.main__projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.projects__containerCards {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .projects__containerCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
