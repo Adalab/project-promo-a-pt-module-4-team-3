@@ -46,8 +46,8 @@ server.get("/api/projects", async (req, res) => {
 
   const queryGetProjects = `
     SELECT *
-    FROM projects, users
-     
+    FROM projects
+    JOIN users ON projects.fkUsers = users.idusers
   `;
 
   const [results] = await conn.query(queryGetProjects);
