@@ -1,6 +1,7 @@
 import GetAvatar from "./GetAvatar";
 import Inputform from "./Inputform";
 import { PropTypes } from "prop-types";
+import { clear } from "../services/localStorage";
 
 function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
   const handleInput = (event) => {
@@ -10,6 +11,11 @@ function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
   const handleClick = (event) => {
     event.preventDefault();
     onSubmit();
+  };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    clear();
   };
 
   return (
@@ -113,14 +119,22 @@ function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
           Guardar proyecto
         </button>
         {responseFetch !== "" && responseFetch.success && (
-          <p>
+          <p className="project__Created">
             Tu proyecto ha sido creado en la siguiente dirección:
-            <a href={responseFetch.cardURL}>{responseFetch.cardURL}</a>
+            <a className="success__link" href={responseFetch.cardURL}>
+              {responseFetch.cardURL}
+            </a>
           </p>
         )}
         {responseFetch !== "" && !responseFetch.success && (
-          <p> Ha ocurrido un error: {responseFetch.error}</p>
+          <p className="error_nolink">
+            {" "}
+            Ha ocurrido un error: {responseFetch.error}
+          </p>
         )}
+        <button className="reset_btn" onClick={handleReset}>
+          Reset
+        </button>
       </fieldset>
     </>
   );

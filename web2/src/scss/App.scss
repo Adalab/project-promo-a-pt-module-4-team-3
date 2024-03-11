@@ -219,7 +219,7 @@
     background-image: linear-gradient(to left, transparent, #343045 25%, #c0b7e8 45%, var(--color-dark-lilac) 65%, #343045 75%, transparent );
   }
   &__group {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
   &__input {
     display: block;
@@ -240,9 +240,11 @@
   }
   &__group--upload {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5px;
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    align-content: center;
+    align-items: center;
   }
   &__hidden {
     display: none;
@@ -329,7 +331,7 @@
     width: 145px;
   
     margin-inline: auto;
-    margin-block: 8px;
+    margin-block: 5px;
     padding: 5px 18px;
     color: var(--color-white);
     font: var(--font-button);
@@ -456,8 +458,69 @@ text-align: center;
   gap: 20px;
 }
 
+
+// BOTÓN RESET LOCALSTORAGE
+
+.reset_btn {
+  margin: 10px 0px 20px 0px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 40px;
+  background-color: #211e2e;
+  width: 80px;
+  height: 20px;
+  font-size: 10px;
+}
+
+// MENSAJE SUCCESS/ERROR
+
+.project__Created {
+ display: flex;
+ flex-direction: column;
+ padding-top: 5px;
+ padding-left: 10px;
+ padding-right: 5px;
+  // text-align: center;
+  .success__link{
+    text-decoration: none;
+    color: #70ba2f;
+  } 
+}
+.error_nolink{
+  padding-top: 5px;
+  text-align: center;
+  font-size: 12px;
+}
+
+
 @media (min-width: 768px) {
   .projects__containerCards {
     grid-template-columns: repeat(2, 1fr);
   }
+  .card__name {
+    margin-top: 5px;
+    margin-left: 16px;
+  }
+  .reset_btn {
+    margin: 10px 0px 20px 0px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 40px;
+    background-color: #211e2e;
+    width: 80px;
+    height: 25px;
+  }
 }
+
+@media (min-width: 1024px) {
+  .reset_btn {
+    margin: 10px 0px 20px 0px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 40px;
+    background-color: #211e2e;
+    width: 80px;
+    height: 25px;
+  }
+}
+
