@@ -470,6 +470,7 @@ text-align: center;
   width: 80px;
   height: 20px;
   font-size: 10px;
+  cursor: pointer;
 }
 
 // MENSAJE SUCCESS/ERROR
@@ -502,27 +503,18 @@ text-align: center;
   }
   .reset_btn {
     margin: 10px 0px 20px 0px;
-    color: white;
-    border: 2px solid white;
-    border-radius: 40px;
-    background-color: #211e2e;
     width: 80px;
     height: 25px;
   }
- /*  .addForm__group--upload {
+  .images__Flex {
     display: flex;
     flex-direction: row;
-    margin-bottom: 5px;
-} */
+  }
 }
 
 @media (min-width: 1024px) {
   .reset_btn {
     margin: 10px 0px 20px 0px;
-    color: white;
-    border: 2px solid white;
-    border-radius: 40px;
-    background-color: #211e2e;
     width: 80px;
     height: 25px;
   }

@@ -105,16 +105,18 @@ function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
       </fieldset>
 
       <fieldset className="addForm__group--upload">
-        <GetAvatar
-          text="Subir foto del proyecto"
-          updateAvatar={updateAvatar}
-          fieldName={"image"}
-        />
-        <GetAvatar
-          text="Subir foto de la autora"
-          updateAvatar={updateAvatar}
-          fieldName={"photo"}
-        />
+        <div className="images__Flex">
+          <GetAvatar
+            text="Subir foto del proyecto"
+            updateAvatar={updateAvatar}
+            fieldName={"image"}
+          />
+          <GetAvatar
+            text="Subir foto de la autora"
+            updateAvatar={updateAvatar}
+            fieldName={"photo"}
+          />
+        </div>
         <button className="button--large" onClick={handleClick}>
           Guardar proyecto
         </button>
