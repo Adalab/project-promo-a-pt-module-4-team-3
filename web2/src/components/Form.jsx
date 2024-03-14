@@ -3,7 +3,14 @@ import Inputform from "./Inputform";
 import { PropTypes } from "prop-types";
 import { clear } from "../services/localStorage";
 
-function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
+function Form({
+  data,
+  updateData,
+  updateAvatar,
+  onSubmit,
+  responseFetch,
+  handleReset,
+}) {
   const handleInput = (event) => {
     updateData(event.currentTarget.name, event.currentTarget.value);
   };
@@ -13,10 +20,10 @@ function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
     onSubmit();
   };
 
-  const handleReset = (event) => {
+  /*   const handleReset = (event) => {
     event.preventDefault();
     clear();
-  };
+  }; */
 
   return (
     <>

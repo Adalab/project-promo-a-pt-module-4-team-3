@@ -7,7 +7,7 @@ import Landing from "./Landing.jsx";
 import Create from "./Create.jsx";
 import RenderProjects from "./RenderProjects.jsx";
 import handleFetchCreate from "../services/onSubmit.js";
-import { get, set } from "../services/localStorage.js";
+import { get, set, clear } from "../services/localStorage.js";
 
 function App() {
   const [data, setData] = useState(
@@ -45,6 +45,29 @@ function App() {
     loadData();
   }, []);
 
+  const handleReset = (event) => {
+    event.preventDefault();
+    clear();
+    setData(
+      get("data", {
+        name: "", // Nombre del proyecto
+        slogan: "", // Slogan del proyecto
+        technologies: "", // Tecnologías
+        repo: "", // Repo
+        demo: "", // Demo
+        desc: "", // Descripción
+        author: "", // Nombre de la autora
+        job: "", // Trabajo de la autora
+        photo: "", // Foto de la autora
+        image: "", // Foto del proyecto
+      })
+    );
+  };
+  /*   useEffect(() => {
+    // Vacía el localStorage y actualiza la variable de estado
+    clear();
+  }, [handleReset]); */
+
   const updateData = (fieldName, userValue) => {
     setData({ ...data, [fieldName]: userValue });
   };
@@ -80,6 +103,7 @@ function App() {
                   onSubmit={createProject}
                   setDataResponse={setDataResponse}
                   dataResponse={dataResponse}
+                  handleReset={handleReset}
                 />
               </main>
               <Footer />{" "}
