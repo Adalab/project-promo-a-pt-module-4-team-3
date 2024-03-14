@@ -1,7 +1,6 @@
 import GetAvatar from "./GetAvatar";
 import Inputform from "./Inputform";
 import { PropTypes } from "prop-types";
-import { clear } from "../services/localStorage";
 
 function Form({
   data,
@@ -19,11 +18,6 @@ function Form({
     event.preventDefault();
     onSubmit();
   };
-
-  /*   const handleReset = (event) => {
-    event.preventDefault();
-    clear();
-  }; */
 
   return (
     <>
