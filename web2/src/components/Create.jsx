@@ -10,6 +10,7 @@ function Create({
   setDataResponse,
   onSubmit,
   dataResponse,
+  handleReset,
 }) {
   return (
     <>
@@ -23,6 +24,7 @@ function Create({
           responseFetch={dataResponse}
           onSubmit={onSubmit}
           data={data}
+          handleReset={handleReset}
         />
       </form>
     </>
@@ -36,6 +38,7 @@ Create.propTypes = {
   setDataResponse: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   dataResponse: PropTypes.string.isRequired,
+  handleReset: PropTypes.func.isRequired,
 };
 
 export default Create;

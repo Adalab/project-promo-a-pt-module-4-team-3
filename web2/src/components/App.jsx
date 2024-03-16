@@ -7,7 +7,7 @@ import Landing from "./Landing.jsx";
 import Create from "./Create.jsx";
 import RenderProjects from "./RenderProjects.jsx";
 import handleFetchCreate from "../services/onSubmit.js";
-import { get, set } from "../services/localStorage.js";
+import { get, set, clear } from "../services/localStorage.js";
 
 function App() {
   const [data, setData] = useState(
@@ -45,6 +45,25 @@ function App() {
     loadData();
   }, []);
 
+  const handleReset = (event) => {
+    event.preventDefault();
+    clear();
+    setData(
+      get("data", {
+        name: "",
+        slogan: "",
+        technologies: "",
+        repo: "",
+        demo: "",
+        desc: "",
+        author: "",
+        job: "",
+        photo: "",
+        image: "",
+      })
+    );
+  };
+
   const updateData = (fieldName, userValue) => {
     setData({ ...data, [fieldName]: userValue });
   };
@@ -80,6 +99,7 @@ function App() {
                   onSubmit={createProject}
                   setDataResponse={setDataResponse}
                   dataResponse={dataResponse}
+                  handleReset={handleReset}
                 />
               </main>
               <Footer />{" "}

@@ -2,7 +2,14 @@ import GetAvatar from "./GetAvatar";
 import Inputform from "./Inputform";
 import { PropTypes } from "prop-types";
 
-function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
+function Form({
+  data,
+  updateData,
+  updateAvatar,
+  onSubmit,
+  responseFetch,
+  handleReset,
+}) {
   const handleInput = (event) => {
     updateData(event.currentTarget.name, event.currentTarget.value);
   };
@@ -99,28 +106,38 @@ function Form({ data, updateData, updateAvatar, onSubmit, responseFetch }) {
       </fieldset>
 
       <fieldset className="addForm__group--upload">
-        <GetAvatar
-          text="Subir foto del proyecto"
-          updateAvatar={updateAvatar}
-          fieldName={"image"}
-        />
-        <GetAvatar
-          text="Subir foto de la autora"
-          updateAvatar={updateAvatar}
-          fieldName={"photo"}
-        />
+        <div className="images__Flex">
+          <GetAvatar
+            text="Subir foto del proyecto"
+            updateAvatar={updateAvatar}
+            fieldName={"image"}
+          />
+          <GetAvatar
+            text="Subir foto de la autora"
+            updateAvatar={updateAvatar}
+            fieldName={"photo"}
+          />
+        </div>
         <button className="button--large" onClick={handleClick}>
           Guardar proyecto
         </button>
         {responseFetch !== "" && responseFetch.success && (
-          <p>
+          <p className="project__Created">
             Tu proyecto ha sido creado en la siguiente dirección:
-            <a href={responseFetch.cardURL}>{responseFetch.cardURL}</a>
+            <a className="success__link" href={responseFetch.cardURL}>
+              {responseFetch.cardURL}
+            </a>
           </p>
         )}
         {responseFetch !== "" && !responseFetch.success && (
-          <p> Ha ocurrido un error: {responseFetch.error}</p>
+          <p className="error_nolink">
+            {" "}
+            Ha ocurrido un error: {responseFetch.error}
+          </p>
         )}
+        <button className="reset_btn" onClick={handleReset}>
+          Reset
+        </button>
       </fieldset>
     </>
   );
