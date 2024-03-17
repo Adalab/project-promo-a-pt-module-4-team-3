@@ -132,7 +132,7 @@ function Form({
         {responseFetch !== "" && !responseFetch.success && (
           <p className="error_nolink">
             {" "}
-            Ha ocurrido un error: {responseFetch.error}
+            Ohhhhh! tu proyecto no ha podido subirse 😪 {responseFetch.error}
           </p>
         )}
         <button className="reset_btn" onClick={handleReset}>

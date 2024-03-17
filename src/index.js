@@ -93,8 +93,12 @@ server.post("/api/projectCard", async (req, res) => {
 
   // 4. Insertar el proyecto Projects(fkUsers)
   const insertProject = `
-  INSERT projects (name, slogan, repo, demo, technologies, \`desc\`, photo, fkUsers)
+
+  INSERT  INTO projects (name, slogan, repo, demo, technologies, \`desc\`, image, fkUsers)
   VALUES (?,?,?,?,?,?,?,?);`;
+  
+
+ 
 
   const [resultsInsertProject] = await conn.execute(insertProject, [
     req.body.name,
@@ -113,7 +117,7 @@ server.post("/api/projectCard", async (req, res) => {
   conn.end();
   // 7. Devuelvo el json
   res.json({
-    succes: true,
+    success: true,
     cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`,
   });
 });
