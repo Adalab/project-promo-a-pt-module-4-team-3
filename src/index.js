@@ -66,7 +66,7 @@ server.get("/api/projects", async (req, res) => {
 
 // endpoint
 
-// Crear proyectos
+// Guardar proyecto nuevo en la base de datos
 server.post("/api/projectCard", async (req, res) => {
   // Datos vienen req.body
   console.log("Ha llamado al POST");
@@ -78,13 +78,13 @@ server.post("/api/projectCard", async (req, res) => {
 
   // 2. Insertar los datos de la autora  Users
   const insertUser = ` 
-INSERT users (author, job, image)
-VALUES(?,?,?)`;
+  INSERT INTO users (author, job, photo)
+  VALUES(?,?,?)`;
 
   const [resultsInsertUser] = await conn.execute(insertUser, [
     req.body.author,
     req.body.job,
-    req.body.image,
+    req.body.photo,
   ]);
 
   // 3. Recupero el id de Users

@@ -73,9 +73,10 @@ function App() {
   };
 
   const createProject = () => {
-    data.autor = data.author;
-    delete data.author;
-    handleFetchCreate(data).then((dataResponse) => {
+    // data.autor = data.author;
+    // delete data.author;
+    handleFetchCreate(data)
+    .then((dataResponse) => {
       console.log(dataResponse);
       setDataResponse(dataResponse);
     });
