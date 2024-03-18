@@ -149,7 +149,7 @@ server.post("/api/projectCard", async (req, res) => {
     // 7. Devuelvo el json
     res.json({
       success: true,
-      cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`,
+      cardURL: `https://project-promo-a-pt-module-4-team-3.onrender.com/projectCard/${idProject}`,
     });
   } catch (error) {
     res.json({
