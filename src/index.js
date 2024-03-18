@@ -73,69 +73,99 @@ server.post("/api/projectCard", async (req, res) => {
   console.log("Ha llamado al POST");
   console.log(req.body);
 
+  const {
+    name,
+    slogan,
+    technologies,
+    repo,
+    demo,
+    desc,
+    author,
+    job,
+    photo,
+    image,
+  } = req.body;
+
   // 1. Conectar a la bbdd
+  if (
+    !name ||
+    name === "" ||
+    !slogan ||
+    slogan === "" ||
+    !technologies ||
+    technologies === "" ||
+    !repo ||
+    repo === "" ||
+    !demo ||
+    demo === "" ||
+    !desc ||
+    desc === "" ||
+    !author ||
+    author === "" ||
+    !job ||
+    job === "" ||
+    !photo ||
+    photo === "" ||
+    !image ||
+    image === ""
+  ) {
+    res.json({
+      success: false,
+      error: "",
+    });
+    return;
+  }
+  try {
+    const conn = await getConnection();
 
-  const conn = await getConnection();
-
-  // 2. Insertar los datos de la autora  Users
-  const insertUser = ` 
+    // 2. Insertar los datos de la autora  Users
+    const insertUser = ` 
   INSERT INTO users (author, job, photo)
   VALUES(?,?,?)`;
 
-  const [resultsInsertUser] = await conn.execute(insertUser, [
-    req.body.author,
-    req.body.job,
-    req.body.photo,
-  ]);
+    const [resultsInsertUser] = await conn.execute(insertUser, [
+      req.body.author,
+      req.body.job,
+      req.body.photo,
+    ]);
 
-  // 3. Recupero el id de Users
-  console.log(resultsInsertUser.insertId);
-  const fkUsers = resultsInsertUser.insertId;
+    // 3. Recupero el id de Users
+    console.log(resultsInsertUser.insertId);
+    const fkUsers = resultsInsertUser.insertId;
 
-  // 4. Insertar el proyecto Projects(fkUsers)
-  const insertProject = `
+    // 4. Insertar el proyecto Projects(fkUsers)
+    const insertProject = `
 
   INSERT  INTO projects (name, slogan, repo, demo, technologies, \`desc\`, image, fkUsers)
   VALUES (?,?,?,?,?,?,?,?);`;
-  
 
- 
+    const [resultsInsertProject] = await conn.execute(insertProject, [
+      req.body.name,
+      req.body.slogan,
+      req.body.repo,
+      req.body.demo,
+      req.body.technologies,
+      req.body.desc,
+      req.body.photo,
+      fkUsers,
+    ]);
 
-  const [resultsInsertProject] = await conn.execute(insertProject, [
-    req.body.name,
-    req.body.slogan,
-    req.body.repo,
-    req.body.demo,
-    req.body.technologies,
-    req.body.desc,
-    req.body.photo,
-    fkUsers,
-  ]);
-
-  // 5. Recupero el id de Projects
-  const idProject = resultsInsertProject.insertId;
-  // 6. Cierro al conexion
-  conn.end();
-  // 7. Devuelvo el json
-  // res.json({
-  //   success: true,
-  //   cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`,
-  // });
-
-  if(resultsInsertProject.affectedRows ===8) {
-    
+    // 5. Recupero el id de Projects
+    const idProject = resultsInsertProject.insertId;
+    // 6. Cierro al conexion
+    conn.end();
+    // 7. Devuelvo el json
     res.json({
       success: true,
-      cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`
-    })
-    
-  }
-  else {
+      cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`,
+    });
+  } catch (error) {
     res.json({
       success: false,
-      error: ''
-    })
-  };
+      error: `Error en la base de datos`,
+    });
+  }
+
 });
 
 // Mostrar el detalle de un proyecto (serv. dinámicos)
@@ -178,6 +208,7 @@ server.use(express.static("./public"));
 // Configura el servidor de estáticos en index.js para que esté disponible el archivo css.
 
 server.use(express.static("./src/public-css"));
+server.use(express.static("./src/public-image"));
 
 // Incluye el fichero main.css en la plantilla, presta mucha atención a la ruta del css. En la plantilla de la carpeta de views, quedaría asi:
 //<link rel=“stylesheet” href=“/main.css” />
