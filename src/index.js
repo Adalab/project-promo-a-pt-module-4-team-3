@@ -190,16 +190,17 @@ server.get("/projectCard/:id", async (req, res) => {
 
 // crear servidor de estáticos
 
-server.use(express.static("./public-react"));
-
 // Crea un servidor de estáticos para los estilos en tu servidor:
 
 // Crea el fichero main.css de estilos en la carpeta src del servidor src/public-css/.
 
 // Configura el servidor de estáticos en index.js para que esté disponible el archivo css.
 
-server.use(express.static("./src/public-css"));
-server.use(express.static("./src/public-image"));
+// server.use(express.static("./src/public-css"));
+
+server.use(express.static("./public"));
+
+server.use(express.static("./public-react"));
 
 // Incluye el fichero main.css en la plantilla, presta mucha atención a la ruta del css. En la plantilla de la carpeta de views, quedaría asi:
 //<link rel=“stylesheet” href=“/main.css” />
