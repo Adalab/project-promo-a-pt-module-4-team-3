@@ -28,14 +28,6 @@ server.listen(serverPort, () => {
 
 // ENDPOINTS
 
-//endpoint prueba
-server.get("/projects", (req, res) => {
-  const response = {
-    projects: [{ name: "NaturaTech" }, { name: "holis" }],
-  };
-  res.json(response);
-});
-
 // endpoint a la base de datos
 // API listar proyectos
 
