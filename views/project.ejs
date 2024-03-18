@@ -1,71 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  
-    <link rel="stylesheet" Content-Type="text/css" href="/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" Content-Type="text/css" href="/main.css" />
 </head>
+
 <body>
-    <section class="preview">
-        <div
-          class="projectImage"
-          style=" background-image: url(<%=  image %>);"
-        />
-        <article class="card">
-          <h2 class="card__projectTitle">
-            <span class="card__projectTitle--text">
-              Tarjeta Del Proyecto
-            </span>
-          </h2>
+  <section class="preview">
+    <div class="projectImage" style=" background-image: url(<%=  image %>);" />
+    <article class="card">
+      <h2 class="card__projectTitle">
+        <span class="card__projectTitle--text">
+          Tarjeta Del Proyecto
+        </span>
+      </h2>
 
-          <div class="card__author">
-            <div
-              class="card__authorPhoto"
-              style=" background-image: url(<%=photo%>);"
-            ></div>
-            <p class="card__job"><%= job %></p>
-            <h3 class="card__name"><%= author %>)</h3>
-          </div>
+      <div class="card__author">
+        <div class="card__authorPhoto" style=" background-image: url(<%= photo %>);"></div>
+        <p class="card__job">
+          <%= job %>
+        </p>
+        <h3 class="card__name">
+          <%= author %>)
+        </h3>
+      </div>
 
-          <div class="card__project">
-            <h3 class="card__name">
-              <strong><%= name %></strong>
-            </h3>
-            <p class="card__slogan"><%= slogan %></p>
-            <h3 class="card__descriptionTitle">
-              <strong>Descripción del proyecto:</strong>
-            </h3>
-            <p class="card__description">
-                <%= desc %>
-            </p>
+      <div class="card__project">
+        <h3 class="card__name">
+          <strong>
+            <%= name %>
+          </strong>
+        </h3>
+        <p class="card__slogan">
+          <%= slogan %>
+        </p>
+        <h3 class="card__descriptionTitle">
+          <strong>Descripción del proyecto:</strong>
+        </h3>
+        <p class="card__description">
+          <%= desc %>
+        </p>
 
-            <div class="card__technicalInfo ">
-              <p class="card__technologies">
-                <%= technologies %>
-              </p>
+        <div class="card__technicalInfo ">
+          <p class="card__technologies">
+            <%= technologies %>
+          </p>
 
-              <a
-                class="icon icon__www"
-                href="<%= demo %>"
-                title="Haz click para ver el proyecto online"
-                target="_blank"
-              >
-                Web link
-              </a>
-              <a
-                class="icon icon__github"
-                href="<%= repo %>"
-                title="Haz click para ver el código del proyecto"
-                target="_blank"
-              >
-                GitHub link
-              </a>
-            </div>
-          </div>
-        </article>
-      </section>
- 
+          <a class="icon icon__www" href="<%= demo %>" title="Haz click para ver el proyecto online" target="_blank">
+            Web link
+          </a>
+          <a class="icon icon__github" href="<%= repo %>" title="Haz click para ver el código del proyecto"
+            target="_blank">
+            GitHub link
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+
 </body>
+
 </html>

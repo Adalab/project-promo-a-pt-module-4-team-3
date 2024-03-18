@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function IndexSection() {
   return (
     <>
@@ -7,9 +9,10 @@ function IndexSection() {
           Biblioteca digital para recoger ideas salvajes a través de la
           tecnología
         </p>
-        <a className="button--link" href="./">
+        <Link className="button--link" to="/projects">
+          {" "}
           Ver proyectos
-        </a>
+        </Link>
       </section>
     </>
   );
