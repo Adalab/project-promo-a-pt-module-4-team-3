@@ -121,18 +121,19 @@ function Form({
         <button className="button--large" onClick={handleClick}>
           Guardar proyecto
         </button>
-        {responseFetch !== "" && responseFetch.success && (
+        {responseFetch !== undefined && responseFetch.success && (
           <p className="project__Created">
-            Tu proyecto ha sido creado en la siguiente dirección:
+            ¡Bravo! Tu proyecto ha sido creado en esta dirección 👇
+      
             <a className="success__link" href={responseFetch.cardURL}>
               {responseFetch.cardURL}
             </a>
           </p>
         )}
-        {responseFetch !== "" && !responseFetch.success && (
+        {responseFetch !== undefined && !responseFetch.success && (
           <p className="error_nolink">
             {" "}
-            Ohhhhh! tu proyecto no ha podido subirse 😪 {responseFetch.error}
+            Ohhhhh! ha surgido un error 😪 {responseFetch.error}
           </p>
         )}
         <button className="reset_btn" onClick={handleReset}>
