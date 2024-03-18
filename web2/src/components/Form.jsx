@@ -123,8 +123,7 @@ function Form({
         </button>
         {responseFetch !== "" && responseFetch.success && (
           <p className="project__Created">
-            ¡Bravo! Tu proyecto ha sido creado en esta dirección 👇
-      
+            Tu proyecto ha sido creado en la siguiente dirección:
             <a className="success__link" href={responseFetch.cardURL}>
               {responseFetch.cardURL}
             </a>
@@ -133,7 +132,7 @@ function Form({
         {responseFetch !== "" && !responseFetch.success && (
           <p className="error_nolink">
             {" "}
-            Ohhhhh! ha surgido un error 😪 {responseFetch.error}
+            Ohhhhh! tu proyecto no ha podido subirse 😪 {responseFetch.error}
           </p>
         )}
         <button className="reset_btn" onClick={handleReset}>

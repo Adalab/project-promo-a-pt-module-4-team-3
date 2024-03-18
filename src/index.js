@@ -37,7 +37,6 @@ server.get("/projects", (req, res) => {
 });
 
 // endpoint a la base de datos
-
 // API listar proyectos
 
 server.get("/api/projects", async (req, res) => {
@@ -62,8 +61,6 @@ server.get("/api/projects", async (req, res) => {
   // Cerramos la conexion
 
   conn.close();
-
-  // configuramos la respuesta en json
 
   res.json({ info: "nada", results: results });
 });
@@ -102,6 +99,8 @@ server.post("/api/projectCard", async (req, res) => {
   VALUES (?,?,?,?,?,?,?,?);`;
   
 
+ 
+
   const [resultsInsertProject] = await conn.execute(insertProject, [
     req.body.name,
     req.body.slogan,
@@ -117,11 +116,26 @@ server.post("/api/projectCard", async (req, res) => {
   const idProject = resultsInsertProject.insertId;
   // 6. Cierro al conexion
   conn.end();
-  // 7. configuramos respuesta en json
-  res.json({
-    success: true,
-    cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`,
-  });
+  // 7. Devuelvo el json
+  // res.json({
+  //   success: true,
+  //   cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`,
+  // });
+
+  if(resultsInsertProject.affectedRows ===8) {
+    
+    res.json({
+      success: true,
+      cardURL: `http://localhost:${serverPort}/projectCard/${idProject}`
+    })
+    
+  }
+  else {
+    res.json({
+      success: false,
+      error: ''
+    })
+  };
 });
 
 // Mostrar el detalle de un proyecto (serv. dinámicos)
