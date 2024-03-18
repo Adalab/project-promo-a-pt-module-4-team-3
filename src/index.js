@@ -198,7 +198,7 @@ server.get("/projectCard/:id", async (req, res) => {
 
 // crear servidor de estáticos
 
-server.use(express.static("./public"));
+server.use(express.static("./public-react"));
 
 // Crea un servidor de estáticos para los estilos en tu servidor:
 
