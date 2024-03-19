@@ -18,6 +18,8 @@
   }
 }
 
+
+
 .container {
   padding: 22px 22px 0 22px;
   background-color: var(--color-dark);
@@ -82,12 +84,16 @@
 
 
 .preview .projectImage {
-  width: 100%;
+  width: 70%;
   aspect-ratio: 1 / 1;
   outline: solid 1px pink;
-
   background-position: top center;
   background-size: cover;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5e892b;  
 }
 
 .preview .card {

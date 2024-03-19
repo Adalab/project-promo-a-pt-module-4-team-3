@@ -9,7 +9,14 @@ function RenderProjects({ projectsData }) {
         // Renderiza el componente CardPreview para cada proyecto
         <div>
           <CardPreview key={project.id} data={project} />
-          <Link to={`/projectCard/${project.idprojects}`}>Ver Proyecto!!</Link>
+          <div className="content__button">
+            <Link
+              to={`/projectCard/${project.idprojects}`}
+              className="button__a"
+            >
+              Ver Proyecto!!
+            </Link>
+          </div>
         </div>
       ))}
     </div>

@@ -15,7 +15,7 @@ function Landing() {
         </p>
         <div className="buttons__landing">
           <div className="content__button">
-            <Link to="/create" class="button__a">
+            <Link to="/create" className="button__a">
               ¡Comparte tu proyecto!
             </Link>
           </div>

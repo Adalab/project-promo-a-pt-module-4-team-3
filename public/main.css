@@ -81,19 +81,26 @@
 }
 
 
+.body__preview{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #5e892b;
+}
+
 .preview .projectImage {
   width: 100%;
   aspect-ratio: 1 / 1;
   outline: solid 1px pink;
-
   background-position: top center;
   background-size: cover;
 }
 
 .preview .card {
   margin-inline: 20px;
-
-  transform: translateY(-45px);
+  transform: translateY(300px);
 }
 
 .card {
